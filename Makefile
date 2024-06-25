@@ -1,9 +1,5 @@
 # Makefile for managing project
 
-# Define the django project directory
-PROJ_DIR=property_webapp_project
-MANAGER=$(PROJ_DIR)/manage.py
-
 # Install dependencies
 install:
 	pip install --upgrade pip && pip install -r requirements.txt
@@ -14,7 +10,7 @@ migrate:
 
 # Start the development server
 runserver:
-	python $(MANAGER) runserver
+	python manage.py runserver
 
 
 test:

@@ -3,3 +3,4 @@ pytest-cov==5.0.0
 pylint==3.2.3
 black==24.4.2
 Django==5.0.6
+pytest-django==4.8.0
