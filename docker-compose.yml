@@ -1,0 +1,42 @@
+name: realynx_app_container
+
+serices: 
+
+  realynx_django_app:
+    build: .
+    volumes:
+      - .:/realynx_container_root
+    ports:
+      - 8000:8000
+    image: realynx_django
+    container_name: realynx_django_app
+    depends_on:
+      db:
+        condition: service_healthy
+    command: python manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgres:14.5
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: realynx
+      POSTGRES_PASSWORD: realynx_
+    container_name: realynx_postgres_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+
+
+

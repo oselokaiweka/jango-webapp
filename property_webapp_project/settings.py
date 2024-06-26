@@ -76,8 +76,12 @@ WSGI_APPLICATION = "property_webapp_project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "realynx"
+        "PASSWORD": "realynx_"
+        "HOST": "db"
+        "PORT": 5432
     }
 }
 
