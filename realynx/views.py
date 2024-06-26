@@ -1,20 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-posts = [
-    {
-        "author": "Oseloka",
-        "title": "Notification post 1",
-        "content": "First notification content.",
-        "date_posted": "June 25, 2024",
-    },
-    {
-        "author": "jkuffor_",
-        "title": "Notification post 2",
-        "content": "Second notification content.",
-        "date_posted": "June 25, 2024",
-    },
-]
+from .models import Post
 
 
 def home(request):
@@ -22,5 +8,7 @@ def home(request):
 
 
 def notice(request):
-    context = {"posts": posts}
+    context = {
+        "posts": Post.objects.all()
+    }
     return render(request, "realynx/notice.html", context)

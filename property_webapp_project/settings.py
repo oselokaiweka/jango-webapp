@@ -25,10 +25,7 @@ SECRET_KEY = "django-insecure-+#s4ebqwjmtfh06=7wui&9j#(c^hf+9gg3%73=9c*$o3pgfo=s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "172.23.0.3",
-]
+ALLOWED_HOSTS = ["localhost",]
 
 
 # Application definition
@@ -53,10 +50,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://localhost:8000",
-    "http://172.23.0.3:8000",
-]
+# ADD "https://localhost:8000" or "http://localhost:8000" to trusted origins
+CSRF_TRUSTED_ORIGINS = ["https://localhost:8000",]
 
 ROOT_URLCONF = "property_webapp_project.urls"
 
