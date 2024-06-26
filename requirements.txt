@@ -4,3 +4,5 @@ pylint==3.2.3
 black==24.4.2
 Django==5.0.6
 pytest-django==4.8.0
+psycopg==3.1.19
+psycopg2-binary==2.9.9
