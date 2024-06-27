@@ -14,7 +14,7 @@ runserver:
 
 # Run test
 test:
-	python -m pytest -vv --cov=src --cov=realynx src.tests realynx
+	python -m pytest -vv --cov=src --cov=realynx 
 
 # Invoke debugger on test fail
 debug:
