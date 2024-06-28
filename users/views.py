@@ -10,8 +10,8 @@ def signup(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f"Account created for {username}!")
-            return redirect('realynx-home')
+            messages.success(request, f"Great! {username} your account has been created. Please log in")
+            return redirect('auth-login')
         else:
             form = UserSignupForm()
             # Clear both password input and retains other fields
@@ -20,7 +20,6 @@ def signup(request):
         form = UserSignupForm()
         # Clear all field input
         return render(request, "users/signup.html", {"form":form})
-
 
 
 """

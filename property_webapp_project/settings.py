@@ -132,6 +132,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Allow crispy_forms to be used as styles and style filters on html templates. 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Redirect successful login to home url instead of default /account/profile
+LOGIN_REDIRECT_URL = 'realynx-home'
