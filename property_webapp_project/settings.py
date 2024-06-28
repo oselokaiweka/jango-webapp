@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["localhost",]
 # Application definition
 
 INSTALLED_APPS = [
+    "crispy_forms",
     "users.apps.UsersConfig",
     "realynx.apps.RealynxConfig",
     "django.contrib.admin",
@@ -129,3 +130,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
