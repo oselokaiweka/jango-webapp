@@ -12,11 +12,15 @@ def signup(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f"Account created for {username}!")
             return redirect('realynx-home')
+        else:
+            form = UserSignupForm()
+            # Clear both password input and retains other fields
+            return render(request, "users/signup.html", {"form":form})
     else:
         form = UserSignupForm()
-    # Render blank form if no post request(page refresh clears form) 
-    # Render form instantiated with invalid POST (Aside passwords, form fields retain data)
-    return render(request, "users/signup.html", {"form":form})
+        # Clear all field input
+        return render(request, "users/signup.html", {"form":form})
+
 
 
 """
