@@ -27,4 +27,3 @@ coverage.xml
 *.po
 *.mo
 *.db
-*.sqlite3
