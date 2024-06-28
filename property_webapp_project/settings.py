@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["localhost",]
 # Application definition
 
 INSTALLED_APPS = [
+    "users.apps.UsersConfig",
     "realynx.apps.RealynxConfig",
     "django.contrib.admin",
     "django.contrib.auth",
