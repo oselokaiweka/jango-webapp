@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 from .models import Post
 
 
@@ -8,7 +8,5 @@ def home(request):
 
 
 def notice(request):
-    context = {
-        "posts": Post.objects.all()
-    }
+    context = {"posts": Post.objects.all()}
     return render(request, "realynx/notice.html", context)

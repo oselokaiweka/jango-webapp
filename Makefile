@@ -29,7 +29,7 @@ debug-maxfail:
 	python -m pytest -vv test_file_path::test_function
 
 format:
-	black src realynx 
+	black src realynx users
 
 lint:
 	PYTHONPATH=$(PWD) pylint --disable=R,C src realynx

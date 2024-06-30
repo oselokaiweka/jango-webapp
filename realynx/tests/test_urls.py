@@ -6,6 +6,6 @@ from django.db.utils import OperationalError
 
 @pytest.mark.django_db
 def test_home(client):
-    url = reverse('realynx-home')
+    url = reverse("realynx-home")
     response = client.get(url)
     assert response.status_code == 200

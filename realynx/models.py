@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 # Create your models here
 
-class Post(models.Model): # Each class will be a different db table
+
+class Post(models.Model):  # Each class will be a different db table
     title = models.CharField(max_length=100)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)

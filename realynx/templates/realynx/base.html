@@ -34,8 +34,21 @@
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Login</a>
-                <a class="nav-item nav-link" href="#">Register</a>
+                {% if user.is_active %}
+                <a class="nav-item nav-link" href="{% url 'users-profile' %}">My Profile</a>  
+                {% if user.is_staff %}
+                  <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+                {% endif %}
+                <form action="{% url 'auth-logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="nav-item nav-link button-as-link">
+                    Logout
+                  </button>
+                </form>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'auth-login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'users-signup' %}">Create Account</a>
+                {% endif %}                
               </div>
             </div>
           </div>

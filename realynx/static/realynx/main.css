@@ -24,10 +24,27 @@ body {
     color: #ffffff;
   }
   
-  .site-header .navbar-nav .nav-link.active {
+  .site-header .navbar-nav .nav-link:active {
     font-weight: 500;
   }
   
+  .button-as-link {
+    background: none;
+    border: none;
+    color: #cbd5db; /* Adjust to match your site's link color */
+    cursor: pointer;
+    font: inherit; /* Ensures the button text matches the surrounding text */
+  }
+
+  .button-as-link:hover {
+    color: #ffffff;
+  }
+
+  .button-as-link:active {
+    font-weight: 0;
+  }
+
+
   .content-section {
     background: #ffffff;
     padding: 10px 20px;

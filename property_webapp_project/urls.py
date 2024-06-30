@@ -18,21 +18,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
+from realynx import views as realynx_views
 from users import views as user_views
 
-# Temp! Dev Env Only!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-class CustomLogoutView(auth_views.LogoutView):
-    # Override to allow GET requests for logout
-    http_method_names = ['get']
-# Temp! Dev Env Only!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("realynx.urls")),
     path("signup/", user_views.signup, name="users-signup"),
+    path("profile/", user_views.profile, name="users-profile"),
     path("login/", auth_views.LoginView.as_view(template_name="users/login.html"), name="auth-login"),
-    path("logout/", CustomLogoutView.as_view(template_name="users/logout.html"), name="auth-logout"), # For dev environment only!  
     path("logout/", auth_views.LogoutView.as_view(template_name="users/logout.html"), name="auth-logout"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,8 +26,10 @@ SECRET_KEY = "django-insecure-+#s4ebqwjmtfh06=7wui&9j#(c^hf+9gg3%73=9c*$o3pgfo=s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost",]
-
+ALLOWED_HOSTS = [
+    "localhost", 
+    "rnfgm-102-91-92-204.a.free.pinggy.link",
+]
 
 # Application definition
 
@@ -54,7 +57,11 @@ MIDDLEWARE = [
 ]
 
 # ADD "https://localhost:8000" or "http://localhost:8000" to trusted origins
-CSRF_TRUSTED_ORIGINS = ["https://localhost:8000",]
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:8000",
+    "http://rnfgm-102-91-92-204.a.free.pinggy.link",
+]
+
 
 ROOT_URLCONF = "property_webapp_project.urls"
 
@@ -125,7 +132,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "realynx/static/realynx/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -137,4 +147,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Redirect successful login to home url instead of default /account/profile
-LOGIN_REDIRECT_URL = 'realynx-home'
+LOGIN_REDIRECT_URL = "realynx-home"
+
+# Redirects attempt to view profile page by logged out user
+LOGIN_URL = "auth-login"
