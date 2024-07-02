@@ -27,3 +27,6 @@ coverage.xml
 *.po
 *.mo
 *.db
+# media
+*.jpg
+*.JPG

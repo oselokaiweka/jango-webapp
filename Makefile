@@ -32,7 +32,7 @@ format:
 	black src realynx users
 
 lint:
-	PYTHONPATH=$(PWD) pylint --disable=R,C src realynx
+	PYTHONPATH=$(PWD) pylint --disable=R,C src realynx users
 
 # Build Docker container
 docker-build:
