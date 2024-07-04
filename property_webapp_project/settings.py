@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost", 
-    "rnfgm-102-91-92-204.a.free.pinggy.link",
+    "rnbks-197-210-85-234.a.free.pinggy.link",
 ]
 
 # Application definition
@@ -59,7 +59,7 @@ MIDDLEWARE = [
 # ADD "https://localhost:8000" or "http://localhost:8000" to trusted origins
 CSRF_TRUSTED_ORIGINS = [
     "https://localhost:8000",
-    "http://rnfgm-102-91-92-204.a.free.pinggy.link",
+    "http://rnbks-197-210-85-234.a.free.pinggy.link",
 ]
 
 

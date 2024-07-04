@@ -1,5 +1,6 @@
 {% extends "realynx/base.html" %}
 {% block content %}
+    <h1 class="mb-3">Notifications by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
     <div class="article-metadata d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="article-title">Create a new notice: </h3>
