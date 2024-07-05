@@ -9,3 +9,5 @@ def test_home(client):
     url = reverse("realynx-home")
     response = client.get(url)
     assert response.status_code == 200
+    assert response.templates[0].name == 'realynx/home.html'
+

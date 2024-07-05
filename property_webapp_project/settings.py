@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+from environ import Env
+
+env = Env()
+Env.read_env()
+
+# Variables from .env file in same directory (See import above)
+ENVIRONMENT = env('ENVIRONMENT', default='production')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,16 +27,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+#s4ebqwjmtfh06=7wui&9j#(c^hf+9gg3%73=9c*$o3pgfo=s"
+# Variables from .env file in same directory (See import above)
+SECRET_KEY = env.str('SECRET_KEY') 
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = [
-    "localhost", 
-    "rnbks-197-210-85-234.a.free.pinggy.link",
-]
+ALLOWED_HOSTS = ["localhost", "*"]
 
 # Application definition
 
@@ -57,10 +65,7 @@ MIDDLEWARE = [
 ]
 
 # ADD "https://localhost:8000" or "http://localhost:8000" to trusted origins
-CSRF_TRUSTED_ORIGINS = [
-    "https://localhost:8000",
-    "http://rnbks-197-210-85-234.a.free.pinggy.link",
-]
+CSRF_TRUSTED_ORIGINS = ["https://localhost:8000"]
 
 
 ROOT_URLCONF = "property_webapp_project.urls"
@@ -91,8 +96,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
+        "USER": env("POSTGRES_USER"), # Variables from .env file in same directory (See import above)
+        "PASSWORD": env("POSTGRES_PASSWORD"),
         "HOST": "db",
         "PORT": 5432,
     }
@@ -151,3 +156,12 @@ LOGIN_REDIRECT_URL = "realynx-home"
 
 # Redirects attempt to view profile page by logged out user
 LOGIN_URL = "auth-login"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+# Variables from .env file in same directory (See import above)
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')

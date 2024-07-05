@@ -14,7 +14,7 @@ runserver:
 
 # Run test
 test:
-	python -m pytest -vv --cov=src --cov=realynx 
+	python -m pytest -vv --cov=src --cov=realynx --cov=users
 
 # Invoke debugger on test fail
 debug:
@@ -29,7 +29,7 @@ debug-maxfail:
 	python -m pytest -vv test_file_path::test_function
 
 format:
-	black src realynx users
+	black 
 
 lint:
 	PYTHONPATH=$(PWD) pylint --disable=R,C src realynx users

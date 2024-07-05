@@ -44,7 +44,6 @@ class UserNoticeListView(ListView):
         return Notice.objects.filter(author=user).order_by("-date_posted")
 
 
-
 class NoticeDetailView(DetailView):
     model = Notice
 
