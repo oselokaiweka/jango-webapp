@@ -16,4 +16,4 @@ class Notice(models.Model):  # Each class will be a different db table
         return self.title
 
     def get_absolute_url(self):
-        return reverse("notice-detail", kwargs={"pk": self.pk})
+        return reverse("notice_detail", kwargs={"pk": self.pk})

@@ -152,10 +152,10 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Redirect successful login to home url instead of default /account/profile
-LOGIN_REDIRECT_URL = "realynx-home"
+LOGIN_REDIRECT_URL = "home"
 
 # Redirects attempt to view profile page by logged out user
-LOGIN_URL = "auth-login"
+LOGIN_URL = "login"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 

@@ -23,31 +23,31 @@
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="container">
-            <h1 class="navbar-brand mr-4" href="{% url 'realynx-home' %}">| Realynx | estate manager</h1>
+            <h1 class="navbar-brand mr-4" href="{% url 'home' %}">| Realynx | estate manager</h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'realynx-home' %}">Home</a>
-                <a class="nav-item nav-link" href="{% url 'realynx-notice' %}">Notification</a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'notice' %}">Notification</a>
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
                 {% if user.is_active %}
-                <a class="nav-item nav-link" href="{% url 'users-profile' %}">My Profile</a>  
+                <a class="nav-item nav-link" href="{% url 'profile' %}">My Profile</a>  
                 {% if user.is_staff %}
                   <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
                 {% endif %}
-                <form action="{% url 'auth-logout' %}" method="post">
+                <form action="{% url 'logout' %}" method="post">
                   {% csrf_token %}
                   <button type="submit" class="nav-item nav-link button-as-link">
                     Logout
                   </button>
                 </form>
                 {% else %}
-                  <a class="nav-item nav-link" href="{% url 'auth-login' %}">Login</a>
-                  <a class="nav-item nav-link" href="{% url 'users-signup' %}">Create Account</a>
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'signup' %}">Create Account</a>
                 {% endif %}                
               </div>
             </div>
