@@ -55,20 +55,3 @@ def temp_media_root(tmpdir, settings):
 def test_image():
     with open('media_test/IMG_8773.jpg', 'rb') as f:
         return SimpleUploadedFile('test_image.jpg', f.read(), content_type='image/jpeg')
-
-
-"""
-@pytest.fixture
-def user_profile_setup(logged_in_user):
-    profile_user = logged_in_user
-    
-    temp_image = tempfile.NamedTemporaryFile(suffix=".jpg") # temp image file
-    image = Image.new('RGB', (400, 400)) # temp image
-    image.save(temp_image, format='JPEG') # Save image to temp_image file
-    temp_image.seek(0) # Return file pointer to start of file name after write op
-    
-    # Update profile of logged in user with image
-    #profile = Profile.objects.update(user=profile_user, image=temp_image.name)
-    yield profile_user, temp_image
-    temp_image.close() # Explicitly delete image file
-"""
