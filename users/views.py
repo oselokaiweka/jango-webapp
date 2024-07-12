@@ -29,14 +29,14 @@ def signup(request):
 def profile(request):
     if request.method == "POST":
         user_form = UserUpdateForm(
-            request.POST, # Pass in data of user on post method
-            instance=request.user # Pass in data of logged in user on get method
+            request.POST,  # Pass in data of user on post method
+            instance=request.user,  # Pass in data of logged in user on get method
         )
 
         profile_form = ProfileUpdateForm(
-            request.POST, # Pass in data of user on post method
-            request.FILES, # Pass in file data attached to the post method
-            instance=request.user.profile # Pass in data of logged in user on get method
+            request.POST,  # Pass in data of user on post method
+            request.FILES,  # Pass in file data attached to the post method
+            instance=request.user.profile,  # Pass in data of logged in user on get method
         )
 
         if user_form.is_valid() and profile_form.is_valid():

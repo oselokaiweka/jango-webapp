@@ -17,11 +17,13 @@ from .models import Notice
 def home(request):
     return render(request, "realynx/home.html", {"title": "Home"})
 
+
 """
 def notice(request):
     context = {"notices": Notice.objects.all()}
     return render(request, "realynx/notice.html", context)
 """
+
 
 class NoticeListView(ListView):
     model = Notice

@@ -12,10 +12,10 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user.username} Profile"
 
-    def save(self, *aargs, **kwargs): # Overrite default model save() for functionality
-        super().save(*aargs, **kwargs) # explicily running default save method of parent class 
+    def save(self, *aargs, **kwargs):  # Overrite default model save() for functionality
+        super().save(*aargs, **kwargs)  # explicily running default save method of parent class
 
-        img = Image.open(self.image.path) # Image associated with current instance
+        img = Image.open(self.image.path)  # Image associated with current instance
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
