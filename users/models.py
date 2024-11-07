@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from PIL import Image
+from PIL import Image, ImageOps
 
 # Create your models here.
 
@@ -13,11 +13,11 @@ class Profile(models.Model):
         return f"{self.user.username} Profile"
 
     def save(self, *aargs, **kwargs):  # Overrite default model save() for functionality
-        super().save(*aargs, **kwargs)  # explicily running default save method of parent class
+        super().save(*aargs, **kwargs)  # explicitly running default save method of parent class
 
         img = Image.open(self.image.path)  # Image associated with current instance
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+            resized_img = ImageOps.fit(img, output_size, Image.ANTIALIAS)
+            resized_img.save(self.image.path)
