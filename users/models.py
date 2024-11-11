@@ -19,5 +19,5 @@ class Profile(models.Model):
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
-            resized_img = ImageOps.fit(img, output_size, Image.ANTIALIAS)
+            resized_img = ImageOps.fit(img, output_size, Image.LANCZOS)
             resized_img.save(self.image.path)

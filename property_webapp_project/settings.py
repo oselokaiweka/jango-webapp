@@ -65,7 +65,7 @@ MIDDLEWARE = [
 ]
 
 # ADD "https://localhost:8000" or "http://localhost:8000" to trusted origins
-CSRF_TRUSTED_ORIGINS = ["https://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = ["https://localhost:8000",  "http://localhost:8081"]
 
 
 ROOT_URLCONF = "property_webapp_project.urls"
@@ -137,7 +137,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "realynx/static/realynx/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"

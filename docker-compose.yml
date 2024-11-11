@@ -5,17 +5,32 @@ services:
   realynx_django_app:
     build: .
     volumes:
-      - .:/realynx_container_root
+      - .:/jango-webapp
+      - ./static:/jango-webapp/static
+      - ./media:/jango-webapp/media
     ports:
       - 8000:8000
     image: realynx_django
     container_name: realynx_django_app
-    command: python manage.py runserver 0.0.0.0:8000 
+    command: gunicorn --workers 1 property_webapp_project.wsgi:application --bind 0.0.0.0:8000
     depends_on:
       db:
         condition: service_healthy
     env_file:
       - .env
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/dockerfile
+    volumes:
+      - ./static:/jango-webapp/static:rw
+      - ./media:/jango-webapp/media:rw
+    ports:
+      - "8081:80"
+    depends_on:
+      - realynx_django_app
+    restart: always
 
   db:
     image: postgres:14.5
@@ -41,4 +56,7 @@ services:
       - 8080:8080
 
 volumes:
+  #static:
+  #media:
   pgdata:
+
