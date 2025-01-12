@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.decorators import login_required
 from .forms import UserSignupForm, UserUpdateForm, ProfileUpdateForm
+from django.conf import settings
 
 # Create your views here.
 
@@ -50,6 +52,27 @@ def profile(request):
 
     context = {"user_form": user_form, "profile_form": profile_form}
     return render(request, "users/profile.html", context)
+
+
+class CustomPasswordResetView(PasswordResetView):
+    email_template_name = 'registration/password_reset_email.html'
+
+    # Update domain in password reset email context to include dev environment port 
+    def post(self, *args, **kwargs):
+        protocol = 'https' if self.request.is_secure() else 'http'
+
+        # Use settings environment to toggle domain behaviour
+        # Include the port only if it's not standard
+        if settings.DEBUG:
+            domain_with_port = self.request.get_host()
+        else:
+            domain_with_port = self.request.get_host().split(':')[0]
+
+        self.extra_email_context = {
+            'protocol': protocol,
+            'domain': domain_with_port,
+        }
+        return super().post(*args, **kwargs)
 
 
 """

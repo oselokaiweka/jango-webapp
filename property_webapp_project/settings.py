@@ -37,7 +37,13 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
+# Instructs Django to recognize and respect the X-Forwarded-Host and X-Forwarded-Proto headers
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
 ALLOWED_HOSTS = ["localhost", "*"]
+BASE_URL = 'http://localhost:8081'
 
 # Application definition
 
@@ -73,7 +79,7 @@ ROOT_URLCONF = "property_webapp_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -158,7 +164,10 @@ LOGIN_REDIRECT_URL = "home"
 # Redirects attempt to view profile page by logged out user
 LOGIN_URL = "login"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+DEFAULT_FROM_EMAIL = 'no-reply@localhost'
 
 # Variables from .env file in same directory (See import above)
 EMAIL_HOST = env('EMAIL_HOST')

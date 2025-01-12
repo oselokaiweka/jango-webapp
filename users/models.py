@@ -13,7 +13,9 @@ class Profile(models.Model):
         return f"{self.user.username} Profile"
 
     def save(self, *args, **kwargs):  # Overrite default model save() for functionality
-        super().save(*args, **kwargs)  # explicitly running default save method of parent class
+        super().save(
+            *args, **kwargs
+        )  # explicitly running default save method of parent class
 
         img = Image.open(self.image.path)  # Image associated with current instance
 
